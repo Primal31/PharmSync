@@ -125,6 +125,12 @@ def restock(body: RestockRequest, user=Depends(require_retail)):
         expiry = date.fromisoformat(body.expiry_date)
     except ValueError: raise HTTPException(400, "Enter valid manufacturing and expiry dates.")
     if expiry <= manufacture: raise HTTPException(400, "Expiry date must be after the manufacturing date.")
+    if manufacture > date.today(): raise HTTPException(400, "Manufacturing date cannot be in the future.")
+    if expiry <= date.today(): raise HTTPException(400, "Expired medicine cannot be added to available inventory.")
+    if not body.medicine_id.strip() or not body.medicine_name.strip() or not body.batch_number.strip():
+        raise HTTPException(400, "Medicine ID, medicine name, and batch number are required.")
+    if not Decimal(str(body.unit_price)).is_finite() or Decimal(str(body.unit_price)) > Decimal("9999999999.99"):
+        raise HTTPException(400, "Enter a valid unit purchase price.")
     if body.storage_condition not in {"Ambient Room Temperature", "Cold Chain", "Unknown"}:
         raise HTTPException(400, "Choose Ambient Room Temperature, Cold Chain, or Unknown.")
     status = body.batch_status.lower()
@@ -134,7 +140,23 @@ def restock(body: RestockRequest, user=Depends(require_retail)):
     try:
         conn = get_connection()
         cur = conn.cursor(dictionary=True)
-        cur.execute("SELECT batch_id,quantity FROM medicine_batches WHERE node_id=%s AND medicine_id=%s AND batch_number=%s FOR UPDATE", (node["node_id"], body.medicine_id.strip(), body.batch_number.strip()))
+        medicine_id = body.medicine_id.strip()
+        if body.gtin:
+            cur.execute("SELECT medicine_id FROM medicines WHERE gtin=%s FOR UPDATE", (body.gtin,))
+            catalog_match = cur.fetchone()
+            if catalog_match:
+                medicine_id = catalog_match["medicine_id"]
+                cur.execute("UPDATE medicines SET medicine_name=%s,generic_name=%s,manufacturer=%s WHERE medicine_id=%s", (body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.manufacturer or "").strip() or None, medicine_id))
+            else:
+                cur.execute("SELECT gtin FROM medicines WHERE medicine_id=%s FOR UPDATE", (medicine_id,))
+                id_match = cur.fetchone()
+                if id_match and id_match["gtin"] and id_match["gtin"] != body.gtin:
+                    raise HTTPException(409, "This PharmSync medicine ID is already linked to a different GTIN.")
+                if id_match:
+                    cur.execute("UPDATE medicines SET gtin=%s,medicine_name=%s,generic_name=%s,manufacturer=%s WHERE medicine_id=%s", (body.gtin, body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.manufacturer or "").strip() or None, medicine_id))
+                else:
+                    cur.execute("INSERT INTO medicines(medicine_id,gtin,medicine_name,generic_name,manufacturer) VALUES(%s,%s,%s,%s,%s)", (medicine_id, body.gtin, body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.manufacturer or "").strip() or None))
+        cur.execute("SELECT batch_id,quantity FROM medicine_batches WHERE node_id=%s AND medicine_id=%s AND batch_number=%s FOR UPDATE", (node["node_id"], medicine_id, body.batch_number.strip()))
         existing = cur.fetchone()
         if existing:
             cur.execute("UPDATE medicine_batches SET quantity=quantity+%s,medicine_name=%s,batch=%s,unit_price_inr=%s,manufacturing_date=%s,expiry_date=%s,storage_condition=%s,batch_status=%s WHERE node_id=%s AND batch_id=%s", (body.quantity, body.medicine_name.strip(), (body.batch or "").strip() or None, Decimal(str(body.unit_price)), manufacture, expiry, body.storage_condition, status, node["node_id"], existing["batch_id"]))
@@ -144,14 +166,14 @@ def restock(body: RestockRequest, user=Depends(require_retail)):
             result = "updated"
         else:
             batch_id = "B" + uuid4().hex[:20].upper()
-            cur.execute("INSERT INTO medicine_batches(batch_id,medicine_id,medicine_name,batch,batch_number,node_id,quantity,unit_price_inr,manufacturing_date,expiry_date,storage_condition,batch_status) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (batch_id, body.medicine_id.strip(), body.medicine_name.strip(), (body.batch or "").strip() or None, body.batch_number.strip(), node["node_id"], body.quantity, Decimal(str(body.unit_price)), manufacture, expiry, body.storage_condition, status))
+            cur.execute("INSERT INTO medicine_batches(batch_id,medicine_id,medicine_name,batch,batch_number,node_id,quantity,unit_price_inr,manufacturing_date,expiry_date,storage_condition,batch_status) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (batch_id, medicine_id, body.medicine_name.strip(), (body.batch or "").strip() or None, body.batch_number.strip(), node["node_id"], body.quantity, Decimal(str(body.unit_price)), manufacture, expiry, body.storage_condition, status))
             new_quantity = body.quantity
             message = f"{body.quantity} units of {body.medicine_name.strip()} added to batch {body.batch_number.strip()}."
             result = "created"
         audit(cur, "INVENTORY_RESTOCKED", "medicine_batch", batch_id, message)
         conn.commit()
         cur.close()
-        return {"success": True, "result": result, "quantity_added": body.quantity, "batch": {"batch_id": batch_id, "medicine_id": body.medicine_id, "medicine_name": body.medicine_name, "batch": body.batch, "batch_number": body.batch_number, "node_id": node["node_id"], "quantity": new_quantity, "unit_price_inr": body.unit_price, "manufacturing_date": manufacture.isoformat(), "expiry_date": expiry.isoformat(), "storage_condition": body.storage_condition, "batch_status": status}}
+        return {"success": True, "result": result, "quantity_added": body.quantity, "batch": {"batch_id": batch_id, "medicine_id": medicine_id, "medicine_name": body.medicine_name, "batch": body.batch, "batch_number": body.batch_number, "node_id": node["node_id"], "quantity": new_quantity, "unit_price_inr": body.unit_price, "manufacturing_date": manufacture.isoformat(), "expiry_date": expiry.isoformat(), "storage_condition": body.storage_condition, "batch_status": status}}
     except Exception as exc:
         if conn: conn.rollback()
         if getattr(exc, "errno", None) == 1062: raise HTTPException(409, "This batch already exists. Refresh inventory and try again.")
