@@ -1,0 +1,19 @@
+import { useCallback, useEffect, useState } from 'react'
+import { ArrowRight, CircleAlert, Clock3, PackageCheck, RefreshCw, ShieldCheck, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import api from '../services/api'
+
+const money=v=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR'}).format(Number(v||0))
+const key=v=>String(v||'').toUpperCase().replaceAll(' ','_')
+export default function MyOrders(){
+ const [orders,setOrders]=useState([]);const [loading,setLoading]=useState(true);const [error,setError]=useState('');const [notice,setNotice]=useState('');const [busy,setBusy]=useState('')
+ const load=useCallback(async()=>{setLoading(true);setError('');try{const {data}=await api.get('/orders/my');setOrders(data.orders||[])}catch(e){setError(e.userMessage||'Unable to load your orders.')}finally{setLoading(false)}},[])
+ useEffect(()=>{load()},[load])
+ const cancel=async order=>{if(!window.confirm('Cancel this request? The reserved quantity will be made available again.'))return;setBusy(order.order_id);setError('');try{await api.post(`/orders/${order.order_id}/cancel`);setNotice('Request cancelled and reserved stock released.');await load()}catch(e){setError(e.response?.data?.detail||e.userMessage||'Unable to cancel this request.')}finally{setBusy('')}}
+ return <div className="site-shell module-shell"><Navbar/><main className="module-page wrap patient-page"><div className="module-heading"><div><span className="eyebrow">PATIENT PORTAL</span><h1>My medicine requests</h1><p>Order status and pharmacy details are refreshed from your account’s MySQL records.</p></div><div className="patient-actions"><button className="button button-quiet" onClick={load} disabled={loading}><RefreshCw size={14} className={loading?'spinner-icon':''}/> Refresh</button><Link className="button button-green" to="/medicines">Find medicine <ArrowRight size={14}/></Link></div></div>
+   {error&&<div className="module-error" role="alert"><CircleAlert size={15}/>{error}</div>}{notice&&<div className="module-notice"><PackageCheck size={15}/>{notice}<button onClick={()=>setNotice('')} aria-label="Dismiss">×</button></div>}
+   {loading?<div className="market-empty">Loading requests…</div>:orders.length?<div className="patient-orders-list">{orders.map(order=>{const status=key(order.status);return <article className="patient-order-card" key={order.order_id}><div className="patient-order-icon"><PackageCheck size={19}/></div><div className="patient-order-main"><span className="tiny-label">REQUEST {order.order_id}</span><h2>{order.medicine_name}</h2><p>{order.quantity} strip{Number(order.quantity)===1?'':'s'} · {order.medicine_id}</p><div className="market-pharmacy"><span><b>{order.pharmacy_name}</b><small>{[order.city,order.state].filter(Boolean).join(', ')}</small></span></div></div><div className="patient-order-price"><b>{money(order.total_amount)}</b><span className={`order-status status-${status.toLowerCase()}`}><i/>{status.replaceAll('_',' ')}</span><small>{new Date(order.created_at).toLocaleString('en-IN')}</small></div><div className="patient-order-actions">{['PENDING','CONFIRMED'].includes(status)&&<button className="button button-quiet" disabled={busy===order.order_id} onClick={()=>cancel(order)}><X size={13}/> Cancel</button>}{status==='READY_FOR_PICKUP'&&<span className="pickup-note"><Clock3 size={13}/> Follow pharmacy pickup instructions</span>}</div></article>})}</div>:<div className="market-empty"><PackageCheck size={23}/><b>No medicine requests yet</b><span>Eligible pharmacy requests will appear here after you submit them.</span><Link className="button button-green" to="/medicines">Browse medicines <ArrowRight size={14}/></Link></div>}
+   <div className="module-disclaimer"><ShieldCheck size={14}/> Status changes made by the pharmacy are shared through the same order record. A completed pickup is final.</div>
+ </main></div>
+}

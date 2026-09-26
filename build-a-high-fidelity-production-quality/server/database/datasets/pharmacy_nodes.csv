@@ -1,0 +1,21 @@
+node_id,node_name,node_type,city,state,address,latitude,longitude,verification_status
+N001,Pharma 01,Pharmacy,Kasaragod,Kerala,"95 Main Road, Kasaragod",13.418816,75.436151,Verified
+N002,Pharma 02,Pharmacy,Kasaragod,Kerala,"95 Main Road, Kasaragod",14.807404,75.047776,Verified
+N003,Pharma 03,Pharmacy,Mysuru,Karnataka,"12 Main Road, Mysuru",13.291935,76.240263,Verified
+N004,Care Clinic 04,Clinic,Mangaluru,Karnataka,"92 Main Road, Mangaluru",14.26224,76.353083,Verified
+N005,Pharma 05,Pharmacy,Udupi,Karnataka,"36 Main Road, Udupi",14.621219,74.818521,Verified
+N006,Care Clinic 06,Clinic,Udupi,Karnataka,"44 Main Road, Udupi",13.425211,75.413644,Verified
+N007,Pharma 07,Pharmacy,Bengaluru,Karnataka,"49 Main Road, Bengaluru",13.017612,77.215359,Verified
+N008,Pharma 08,Pharmacy,Shivamogga,Karnataka,"6 Main Road, Shivamogga",14.441897,76.32825,Verified
+N009,Pharma 09,Pharmacy,Mysuru,Karnataka,"38 Main Road, Mysuru",14.66616,76.562781,Verified
+N010,Care Clinic 10,Clinic,Bengaluru,Karnataka,"91 Main Road, Bengaluru",12.956499,76.6846,Verified
+N011,Health Trust 11,Charity,Bengaluru,Karnataka,"30 Main Road, Bengaluru",14.749588,75.88336,Verified
+N012,Care Clinic 12,Clinic,Mysuru,Karnataka,"47 Main Road, Mysuru",13.165972,75.812521,Verified
+N013,Pharma 13,Pharmacy,Kasaragod,Kerala,"88 Main Road, Kasaragod",14.25808,76.536023,Verified
+N014,Pharma 14,Pharmacy,Udupi,Karnataka,"32 Main Road, Udupi",13.167656,75.881448,Verified
+N015,Care Clinic 15,Clinic,Kasaragod,Kerala,"29 Main Road, Kasaragod",14.340382,77.202128,Verified
+N016,Pharma 16,Pharmacy,Mangaluru,Karnataka,"5 Main Road, Mangaluru",14.611353,75.94332,Verified
+N017,Pharma 17,Pharmacy,Mangaluru,Karnataka,"73 Main Road, Mangaluru",14.771827,75.696832,Verified
+N018,Pharma 18,Pharmacy,Kasaragod,Kerala,"83 Main Road, Kasaragod",13.832417,75.554908,Verified
+N019,Care Clinic 19,Clinic,Udupi,Karnataka,"69 Main Road, Udupi",13.391169,76.46607,Verified
+N020,Pharma 20,Pharmacy,Shivamogga,Karnataka,"29 Main Road, Shivamogga",15.043983,75.194245,Verified

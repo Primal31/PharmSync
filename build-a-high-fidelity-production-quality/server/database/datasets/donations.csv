@@ -1,0 +1,61 @@
+donation_id,donation_date,donor_pharmacy_id,charity_id,medicine_id,medicine_name,quantity,status,reason
+DN0001,2026-06-19,N016,C009,MED011,Doxycycline 100mg,38,Received,Near-expiry redistribution
+DN0002,2026-08-03,N016,C007,MED010,Salbutamol 4mg,8,Dispatched,Free medical camp requirement
+DN0003,2026-08-18,N013,C009,MED011,Doxycycline 100mg,36,Received,Emergency community demand
+DN0004,2026-07-29,N002,C005,MED005,Amlodipine 5mg,12,Allocated,Emergency community demand
+DN0005,2026-07-26,N013,C001,MED007,Cetirizine 10mg,31,Dispatched,Near-expiry redistribution
+DN0006,2026-06-07,N018,C007,MED006,Omeprazole 20mg,45,Received,Free medical camp requirement
+DN0007,2026-09-09,N020,C005,MED007,Cetirizine 10mg,52,Received,Clinic shortage unresolved
+DN0008,2026-08-26,N013,C010,MED006,Omeprazole 20mg,20,Dispatched,Emergency community demand
+DN0009,2026-09-07,N002,C006,MED004,Metformin 500mg,11,Dispatched,Emergency community demand
+DN0010,2026-08-03,N005,C009,MED010,Salbutamol 4mg,25,Dispatched,Free medical camp requirement
+DN0011,2026-06-20,N003,C004,MED004,Metformin 500mg,68,Received,Emergency community demand
+DN0012,2026-06-05,N007,C008,MED008,ORS Sachet,68,Allocated,Clinic shortage unresolved
+DN0013,2026-07-23,N013,C005,MED007,Cetirizine 10mg,35,Allocated,Free medical camp requirement
+DN0014,2026-09-19,N007,C008,MED001,Paracetamol 500mg,68,Received,Emergency community demand
+DN0015,2026-07-19,N001,C008,MED005,Amlodipine 5mg,18,Dispatched,Near-expiry redistribution
+DN0016,2026-06-24,N008,C010,MED005,Amlodipine 5mg,56,Dispatched,Clinic shortage unresolved
+DN0017,2026-09-19,N016,C005,MED007,Cetirizine 10mg,76,Allocated,Free medical camp requirement
+DN0018,2026-08-20,N002,C001,MED009,Insulin Regular,54,Received,Emergency community demand
+DN0019,2026-08-21,N016,C004,MED009,Insulin Regular,20,Allocated,Clinic shortage unresolved
+DN0020,2026-08-09,N020,C001,MED007,Cetirizine 10mg,48,Received,Free medical camp requirement
+DN0021,2026-08-31,N016,C001,MED003,Azithromycin 500mg,70,Dispatched,Clinic shortage unresolved
+DN0022,2026-09-21,N003,C004,MED001,Paracetamol 500mg,47,Dispatched,Emergency community demand
+DN0023,2026-07-10,N014,C010,MED003,Azithromycin 500mg,22,Dispatched,Free medical camp requirement
+DN0024,2026-08-06,N016,C007,MED003,Azithromycin 500mg,43,Received,Free medical camp requirement
+DN0025,2026-06-11,N014,C007,MED009,Insulin Regular,73,Dispatched,Free medical camp requirement
+DN0026,2026-06-13,N001,C008,MED008,ORS Sachet,52,Dispatched,Clinic shortage unresolved
+DN0027,2026-07-13,N007,C004,MED007,Cetirizine 10mg,8,Received,Emergency community demand
+DN0028,2026-07-04,N020,C009,MED005,Amlodipine 5mg,79,Received,Near-expiry redistribution
+DN0029,2026-09-19,N016,C010,MED012,Ibuprofen 400mg,66,Allocated,Emergency community demand
+DN0030,2026-06-12,N017,C004,MED003,Azithromycin 500mg,36,Allocated,Clinic shortage unresolved
+DN0031,2026-09-23,N013,C008,MED004,Metformin 500mg,45,Dispatched,Near-expiry redistribution
+DN0032,2026-06-29,N005,C010,MED007,Cetirizine 10mg,57,Received,Emergency community demand
+DN0033,2026-06-24,N001,C010,MED012,Ibuprofen 400mg,22,Received,Near-expiry redistribution
+DN0034,2026-08-15,N017,C009,MED009,Insulin Regular,66,Received,Emergency community demand
+DN0035,2026-09-03,N013,C009,MED006,Omeprazole 20mg,73,Dispatched,Free medical camp requirement
+DN0036,2026-06-19,N018,C006,MED011,Doxycycline 100mg,38,Received,Emergency community demand
+DN0037,2026-08-25,N007,C008,MED004,Metformin 500mg,76,Dispatched,Near-expiry redistribution
+DN0038,2026-06-19,N007,C004,MED005,Amlodipine 5mg,31,Received,Emergency community demand
+DN0039,2026-07-26,N008,C001,MED006,Omeprazole 20mg,76,Received,Free medical camp requirement
+DN0040,2026-09-10,N016,C004,MED005,Amlodipine 5mg,74,Dispatched,Emergency community demand
+DN0041,2026-06-19,N020,C005,MED006,Omeprazole 20mg,23,Dispatched,Clinic shortage unresolved
+DN0042,2026-06-26,N002,C006,MED005,Amlodipine 5mg,49,Dispatched,Free medical camp requirement
+DN0043,2026-07-26,N005,C008,MED012,Ibuprofen 400mg,30,Received,Free medical camp requirement
+DN0044,2026-06-28,N007,C006,MED009,Insulin Regular,22,Allocated,Near-expiry redistribution
+DN0045,2026-09-19,N017,C008,MED004,Metformin 500mg,72,Allocated,Near-expiry redistribution
+DN0046,2026-09-13,N009,C006,MED001,Paracetamol 500mg,47,Received,Emergency community demand
+DN0047,2026-06-30,N020,C009,MED002,Amoxicillin 500mg,22,Allocated,Near-expiry redistribution
+DN0048,2026-07-04,N013,C001,MED007,Cetirizine 10mg,66,Received,Near-expiry redistribution
+DN0049,2026-08-15,N007,C006,MED005,Amlodipine 5mg,12,Allocated,Near-expiry redistribution
+DN0050,2026-06-23,N018,C007,MED009,Insulin Regular,9,Allocated,Emergency community demand
+DN0051,2026-05-29,N001,C001,MED003,Azithromycin 500mg,55,Dispatched,Near-expiry redistribution
+DN0052,2026-06-06,N007,C007,MED012,Ibuprofen 400mg,9,Allocated,Free medical camp requirement
+DN0053,2026-07-10,N002,C004,MED010,Salbutamol 4mg,47,Dispatched,Emergency community demand
+DN0054,2026-07-18,N014,C008,MED011,Doxycycline 100mg,68,Allocated,Emergency community demand
+DN0055,2026-09-01,N020,C005,MED005,Amlodipine 5mg,19,Dispatched,Near-expiry redistribution
+DN0056,2026-07-29,N017,C005,MED012,Ibuprofen 400mg,37,Received,Near-expiry redistribution
+DN0057,2026-06-23,N008,C001,MED001,Paracetamol 500mg,42,Received,Near-expiry redistribution
+DN0058,2026-07-09,N017,C004,MED003,Azithromycin 500mg,56,Dispatched,Free medical camp requirement
+DN0059,2026-08-05,N017,C010,MED002,Amoxicillin 500mg,17,Allocated,Near-expiry redistribution
+DN0060,2026-08-15,N005,C006,MED008,ORS Sachet,5,Dispatched,Emergency community demand

@@ -1,0 +1,37 @@
+transfer_id,transfer_date,source_pharmacy_id,destination_clinic_id,batch_id,medicine_id,medicine_name,quantity,status,decision_reason,distance_km
+T00001,2026-09-17,N014,N019,B0056,MED003,Azithromycin 500mg,12,Completed,Sales velocity + clinic shortage match,18.8
+T00002,2026-07-06,N013,N010,B0051,MED006,Omeprazole 20mg,2,Pending,Sales velocity + clinic shortage match,44.2
+T00003,2026-06-24,N008,N006,B0037,MED011,Doxycycline 100mg,8,Completed,Sales velocity + clinic shortage match,35.2
+T00004,2026-09-08,N020,N004,B0086,MED010,Salbutamol 4mg,11,Completed,Sales velocity + clinic shortage match,17.1
+T00005,2026-09-17,N003,N006,B0015,MED009,Insulin Regular,5,Pending,Sales velocity + clinic shortage match,3.6
+T00006,2026-06-04,N020,N015,B0084,MED008,ORS Sachet,7,Completed,Sales velocity + clinic shortage match,15.6
+T00007,2026-06-21,N007,N012,B0032,MED008,ORS Sachet,2,Completed,Sales velocity + clinic shortage match,14.3
+T00008,2026-08-22,N001,N010,B0004,MED003,Azithromycin 500mg,11,Completed,Sales velocity + clinic shortage match,36.4
+T00009,2026-06-22,N009,N012,B0048,MED008,ORS Sachet,13,Pending,Sales velocity + clinic shortage match,40.5
+T00010,2026-06-29,N003,N006,B0015,MED009,Insulin Regular,16,Pending,Sales velocity + clinic shortage match,17.8
+T00011,2026-06-15,N014,N019,B0060,MED009,Insulin Regular,9,Completed,Sales velocity + clinic shortage match,33.3
+T00012,2026-06-12,N009,N010,B0045,MED011,Doxycycline 100mg,20,Completed,Sales velocity + clinic shortage match,25.5
+T00013,2026-09-15,N008,N019,B0037,MED011,Doxycycline 100mg,4,In Transit,Sales velocity + clinic shortage match,30.4
+T00014,2026-09-04,N018,N019,B0079,MED005,Amlodipine 5mg,14,Pending,Sales velocity + clinic shortage match,17.1
+T00015,2026-07-09,N001,N004,B0004,MED003,Azithromycin 500mg,12,Pending,Sales velocity + clinic shortage match,13.8
+T00016,2026-09-16,N020,N019,B0084,MED008,ORS Sachet,2,Pending,Sales velocity + clinic shortage match,17.6
+T00017,2026-09-22,N020,N004,B0086,MED010,Salbutamol 4mg,6,Completed,Sales velocity + clinic shortage match,38.5
+T00018,2026-09-21,N020,N012,B0083,MED006,Omeprazole 20mg,15,Completed,Sales velocity + clinic shortage match,4.9
+T00019,2026-08-10,N020,N012,B0080,MED011,Doxycycline 100mg,12,Pending,Sales velocity + clinic shortage match,42.8
+T00020,2026-08-09,N013,N004,B0049,MED009,Insulin Regular,12,Pending,Sales velocity + clinic shortage match,34.8
+T00021,2026-08-10,N003,N006,B0016,MED012,Ibuprofen 400mg,17,Pending,Sales velocity + clinic shortage match,15.5
+T00022,2026-07-21,N003,N004,B0016,MED012,Ibuprofen 400mg,16,Pending,Sales velocity + clinic shortage match,41.3
+T00023,2026-08-31,N018,N012,B0076,MED011,Doxycycline 100mg,16,Completed,Sales velocity + clinic shortage match,7.8
+T00024,2026-09-14,N003,N004,B0020,MED001,Paracetamol 500mg,15,In Transit,Sales velocity + clinic shortage match,30.7
+T00025,2026-08-19,N014,N015,B0055,MED005,Amlodipine 5mg,18,In Transit,Sales velocity + clinic shortage match,38.6
+T00026,2026-06-16,N018,N010,B0076,MED011,Doxycycline 100mg,6,In Transit,Sales velocity + clinic shortage match,23.9
+T00027,2026-08-26,N005,N015,B0027,MED003,Azithromycin 500mg,5,Pending,Sales velocity + clinic shortage match,3.1
+T00028,2026-08-09,N014,N019,B0060,MED009,Insulin Regular,19,Pending,Sales velocity + clinic shortage match,36.6
+T00029,2026-07-09,N014,N015,B0058,MED007,Cetirizine 10mg,5,Completed,Sales velocity + clinic shortage match,4.8
+T00030,2026-08-04,N013,N015,B0049,MED009,Insulin Regular,17,Pending,Sales velocity + clinic shortage match,37.4
+T00031,2026-07-30,N008,N015,B0039,MED005,Amlodipine 5mg,3,Pending,Sales velocity + clinic shortage match,31.2
+T00032,2026-06-05,N008,N004,B0041,MED006,Omeprazole 20mg,5,Completed,Sales velocity + clinic shortage match,35.0
+T00033,2026-08-12,N008,N012,B0039,MED005,Amlodipine 5mg,8,In Transit,Sales velocity + clinic shortage match,38.4
+T00034,2026-07-09,N003,N004,B0020,MED001,Paracetamol 500mg,10,Completed,Sales velocity + clinic shortage match,23.6
+T00035,2026-05-28,N003,N015,B0020,MED001,Paracetamol 500mg,19,Completed,Sales velocity + clinic shortage match,9.4
+T00036,2026-06-12,N016,N012,B0067,MED004,Metformin 500mg,2,Completed,Sales velocity + clinic shortage match,5.5

@@ -1,0 +1,251 @@
+log_id,timestamp,agent_name,action,entity_type,entity_id,status,message
+LOG00001,2026-08-26T16:15:54,AuditAgent,TRANSFER_CREATED,demand,D0001,SUCCESS,Rule evaluated successfully
+LOG00002,2026-07-02T04:18:15,TransferAgent,TRANSFER_CREATED,sale,S00515,SUCCESS,Fallback route evaluated
+LOG00003,2026-08-28T07:58:41,DemandAgent,DONATION_CREATED,sale,S00383,WARNING,Transaction recorded for audit
+LOG00004,2026-08-29T09:00:35,ExpiryAgent,AUDIT_RECORD_CREATED,batch,B0068,SUCCESS,Fallback route evaluated
+LOG00005,2026-07-23T07:21:37,CharityFallbackAgent,EXPIRY_ALERT_CREATED,sale,S00336,WARNING,Near-expiry batch identified
+LOG00006,2026-09-14T18:34:55,TransferAgent,BATCH_SCANNED,transfer,T00030,WARNING,Near-expiry batch identified
+LOG00007,2026-07-01T11:13:12,ExpiryAgent,BATCH_SCANNED,transfer,T00005,SUCCESS,Transaction recorded for audit
+LOG00008,2026-09-17T19:42:11,InventoryAgent,SALES_VELOCITY_CALCULATED,transfer,T00012,INFO,Shortage detected and prioritized
+LOG00009,2026-08-08T16:19:50,AuditAgent,CHARITY_FALLBACK_TRIGGERED,transfer,T00023,WARNING,Near-expiry batch identified
+LOG00010,2026-07-20T04:38:11,ExpiryAgent,MATCH_CREATED,batch,B0003,SUCCESS,Candidate matched for redistribution
+LOG00011,2026-07-29T12:36:11,DemandAgent,TRANSFER_CREATED,sale,S00033,SUCCESS,Rule evaluated successfully
+LOG00012,2026-07-11T01:13:20,TransferAgent,AUDIT_RECORD_CREATED,charity,C006,WARNING,Candidate matched for redistribution
+LOG00013,2026-09-18T05:06:07,CharityFallbackAgent,TRANSFER_CREATED,sale,S00327,WARNING,Candidate matched for redistribution
+LOG00014,2026-08-04T10:56:27,MatchingAgent,BATCH_SCANNED,donation,DN0032,SUCCESS,Transaction recorded for audit
+LOG00015,2026-07-02T13:52:38,AuditAgent,EXPIRY_ALERT_CREATED,demand,D0010,WARNING,Near-expiry batch identified
+LOG00016,2026-08-26T08:12:16,MatchingAgent,DEMAND_EVALUATED,transfer,T00027,INFO,Candidate matched for redistribution
+LOG00017,2026-08-24T07:24:11,MatchingAgent,SALES_VELOCITY_CALCULATED,transfer,T00004,WARNING,Fallback route evaluated
+LOG00018,2026-09-20T02:38:59,DemandAgent,AUDIT_RECORD_CREATED,charity,C008,SUCCESS,Rule evaluated successfully
+LOG00019,2026-08-29T06:55:06,ExpiryAgent,SALES_VELOCITY_CALCULATED,charity,C006,WARNING,Shortage detected and prioritized
+LOG00020,2026-08-20T13:51:34,TransferAgent,EXPIRY_ALERT_CREATED,charity,C010,INFO,Rule evaluated successfully
+LOG00021,2026-07-27T11:39:33,DemandAgent,TRANSFER_STATUS_UPDATED,demand,D0015,WARNING,Fallback route evaluated
+LOG00022,2026-07-13T15:12:12,MatchingAgent,DEMAND_EVALUATED,sale,S00236,SUCCESS,Near-expiry batch identified
+LOG00023,2026-07-05T17:51:43,TransferAgent,DEMAND_EVALUATED,charity,C005,WARNING,Transaction recorded for audit
+LOG00024,2026-09-18T19:04:34,InventoryAgent,SALES_VELOCITY_CALCULATED,charity,C006,SUCCESS,Transaction recorded for audit
+LOG00025,2026-09-06T00:19:58,DemandAgent,EXPIRY_ALERT_CREATED,transfer,T00032,WARNING,Fallback route evaluated
+LOG00026,2026-08-04T00:25:53,InventoryAgent,EXPIRY_ALERT_CREATED,charity,C009,SUCCESS,Rule evaluated successfully
+LOG00027,2026-09-13T19:05:32,DemandAgent,MATCH_CREATED,sale,S00540,SUCCESS,Shortage detected and prioritized
+LOG00028,2026-08-05T16:42:41,CharityFallbackAgent,MATCH_CREATED,charity,C009,INFO,Near-expiry batch identified
+LOG00029,2026-07-17T17:19:50,InventoryAgent,BATCH_SCANNED,charity,C008,WARNING,Rule evaluated successfully
+LOG00030,2026-07-20T01:32:57,DemandAgent,MATCH_CREATED,charity,C004,SUCCESS,Fallback route evaluated
+LOG00031,2026-07-15T23:57:39,InventoryAgent,DEMAND_EVALUATED,demand,D0010,SUCCESS,Candidate matched for redistribution
+LOG00032,2026-07-15T08:45:19,CharityFallbackAgent,CHARITY_FALLBACK_TRIGGERED,charity,C004,WARNING,Transaction recorded for audit
+LOG00033,2026-08-12T01:57:18,InventoryAgent,CHARITY_FALLBACK_TRIGGERED,sale,S00349,INFO,Near-expiry batch identified
+LOG00034,2026-08-27T12:57:16,CharityFallbackAgent,CHARITY_FALLBACK_TRIGGERED,transfer,T00006,SUCCESS,Transaction recorded for audit
+LOG00035,2026-09-16T02:59:12,MatchingAgent,DEMAND_EVALUATED,transfer,T00021,SUCCESS,Rule evaluated successfully
+LOG00036,2026-08-17T16:11:32,MatchingAgent,TRANSFER_CREATED,batch,B0017,SUCCESS,Rule evaluated successfully
+LOG00037,2026-09-14T12:53:08,CharityFallbackAgent,SALES_VELOCITY_CALCULATED,donation,DN0019,INFO,Rule evaluated successfully
+LOG00038,2026-07-16T08:50:16,CharityFallbackAgent,EXPIRY_ALERT_CREATED,sale,S00174,INFO,Candidate matched for redistribution
+LOG00039,2026-09-17T06:05:16,TransferAgent,TRANSFER_CREATED,transfer,T00024,INFO,Fallback route evaluated
+LOG00040,2026-07-09T07:07:10,TransferAgent,SALES_VELOCITY_CALCULATED,sale,S00007,SUCCESS,Near-expiry batch identified
+LOG00041,2026-08-14T15:40:41,AuditAgent,AUDIT_RECORD_CREATED,sale,S00329,INFO,Shortage detected and prioritized
+LOG00042,2026-08-19T23:02:35,TransferAgent,AUDIT_RECORD_CREATED,sale,S00386,WARNING,Candidate matched for redistribution
+LOG00043,2026-07-12T19:51:56,DemandAgent,EXPIRY_ALERT_CREATED,batch,B0060,INFO,Transaction recorded for audit
+LOG00044,2026-07-24T05:04:02,ExpiryAgent,TRANSFER_CREATED,sale,S00158,WARNING,Near-expiry batch identified
+LOG00045,2026-07-13T14:35:34,CharityFallbackAgent,EXPIRY_ALERT_CREATED,charity,C004,SUCCESS,Candidate matched for redistribution
+LOG00046,2026-07-03T12:55:31,DemandAgent,AUDIT_RECORD_CREATED,batch,B0073,SUCCESS,Shortage detected and prioritized
+LOG00047,2026-08-28T18:35:35,ExpiryAgent,EXPIRY_ALERT_CREATED,donation,DN0024,INFO,Transaction recorded for audit
+LOG00048,2026-07-12T18:13:17,DemandAgent,TRANSFER_STATUS_UPDATED,batch,B0062,SUCCESS,Transaction recorded for audit
+LOG00049,2026-09-07T12:40:56,MatchingAgent,TRANSFER_STATUS_UPDATED,transfer,T00023,INFO,Transaction recorded for audit
+LOG00050,2026-06-28T16:28:23,MatchingAgent,SALES_VELOCITY_CALCULATED,demand,D0002,SUCCESS,Transaction recorded for audit
+LOG00051,2026-08-25T18:47:12,DemandAgent,EXPIRY_ALERT_CREATED,sale,S00574,SUCCESS,Candidate matched for redistribution
+LOG00052,2026-07-06T23:55:54,TransferAgent,CHARITY_FALLBACK_TRIGGERED,batch,B0079,SUCCESS,Candidate matched for redistribution
+LOG00053,2026-08-21T02:16:40,CharityFallbackAgent,SALES_VELOCITY_CALCULATED,donation,DN0030,SUCCESS,Transaction recorded for audit
+LOG00054,2026-07-25T19:12:48,ExpiryAgent,TRANSFER_STATUS_UPDATED,donation,DN0023,WARNING,Candidate matched for redistribution
+LOG00055,2026-07-01T10:49:46,CharityFallbackAgent,AUDIT_RECORD_CREATED,batch,B0087,SUCCESS,Candidate matched for redistribution
+LOG00056,2026-08-09T05:08:48,CharityFallbackAgent,CHARITY_FALLBACK_TRIGGERED,transfer,T00028,WARNING,Transaction recorded for audit
+LOG00057,2026-07-05T06:18:26,CharityFallbackAgent,DEMAND_EVALUATED,transfer,T00021,WARNING,Rule evaluated successfully
+LOG00058,2026-08-11T00:20:56,TransferAgent,DEMAND_EVALUATED,sale,S00576,INFO,Transaction recorded for audit
+LOG00059,2026-07-31T17:47:34,DemandAgent,SALES_VELOCITY_CALCULATED,donation,DN0018,WARNING,Shortage detected and prioritized
+LOG00060,2026-09-04T16:39:02,CharityFallbackAgent,DONATION_CREATED,donation,DN0050,WARNING,Rule evaluated successfully
+LOG00061,2026-07-31T19:53:31,DemandAgent,CHARITY_FALLBACK_TRIGGERED,batch,B0084,SUCCESS,Rule evaluated successfully
+LOG00062,2026-07-31T04:16:26,AuditAgent,MATCH_CREATED,sale,S00360,SUCCESS,Candidate matched for redistribution
+LOG00063,2026-09-18T20:45:20,MatchingAgent,EXPIRY_ALERT_CREATED,demand,D0011,SUCCESS,Fallback route evaluated
+LOG00064,2026-08-22T18:43:45,ExpiryAgent,SALES_VELOCITY_CALCULATED,sale,S00061,SUCCESS,Candidate matched for redistribution
+LOG00065,2026-08-15T09:00:47,AuditAgent,CHARITY_FALLBACK_TRIGGERED,transfer,T00027,SUCCESS,Transaction recorded for audit
+LOG00066,2026-09-14T14:40:02,CharityFallbackAgent,TRANSFER_CREATED,charity,C001,SUCCESS,Transaction recorded for audit
+LOG00067,2026-07-29T23:06:49,ExpiryAgent,TRANSFER_STATUS_UPDATED,batch,B0069,INFO,Shortage detected and prioritized
+LOG00068,2026-08-15T10:19:31,MatchingAgent,EXPIRY_ALERT_CREATED,donation,DN0058,SUCCESS,Rule evaluated successfully
+LOG00069,2026-07-07T16:43:58,InventoryAgent,SALES_VELOCITY_CALCULATED,sale,S00468,SUCCESS,Candidate matched for redistribution
+LOG00070,2026-08-21T03:23:54,ExpiryAgent,TRANSFER_STATUS_UPDATED,demand,D0011,SUCCESS,Near-expiry batch identified
+LOG00071,2026-07-04T03:19:13,ExpiryAgent,SALES_VELOCITY_CALCULATED,batch,B0028,WARNING,Transaction recorded for audit
+LOG00072,2026-07-31T00:20:17,InventoryAgent,TRANSFER_STATUS_UPDATED,batch,B0055,SUCCESS,Transaction recorded for audit
+LOG00073,2026-09-12T03:45:26,MatchingAgent,TRANSFER_STATUS_UPDATED,demand,D0009,WARNING,Transaction recorded for audit
+LOG00074,2026-09-04T16:01:24,MatchingAgent,MATCH_CREATED,charity,C004,SUCCESS,Rule evaluated successfully
+LOG00075,2026-07-12T13:58:55,MatchingAgent,CHARITY_FALLBACK_TRIGGERED,demand,D0018,SUCCESS,Transaction recorded for audit
+LOG00076,2026-08-18T07:28:48,CharityFallbackAgent,AUDIT_RECORD_CREATED,donation,DN0051,INFO,Near-expiry batch identified
+LOG00077,2026-09-11T08:46:39,TransferAgent,AUDIT_RECORD_CREATED,batch,B0068,WARNING,Near-expiry batch identified
+LOG00078,2026-08-10T19:53:32,ExpiryAgent,DEMAND_EVALUATED,transfer,T00001,SUCCESS,Rule evaluated successfully
+LOG00079,2026-08-06T18:26:42,MatchingAgent,EXPIRY_ALERT_CREATED,transfer,T00035,SUCCESS,Rule evaluated successfully
+LOG00080,2026-08-17T02:52:37,CharityFallbackAgent,MATCH_CREATED,sale,S00335,SUCCESS,Rule evaluated successfully
+LOG00081,2026-08-25T03:08:20,TransferAgent,SALES_VELOCITY_CALCULATED,transfer,T00012,SUCCESS,Transaction recorded for audit
+LOG00082,2026-09-24T05:57:53,TransferAgent,TRANSFER_STATUS_UPDATED,donation,DN0009,SUCCESS,Rule evaluated successfully
+LOG00083,2026-08-14T15:37:52,MatchingAgent,EXPIRY_ALERT_CREATED,batch,B0034,SUCCESS,Near-expiry batch identified
+LOG00084,2026-07-15T06:04:33,MatchingAgent,DEMAND_EVALUATED,demand,D0008,SUCCESS,Rule evaluated successfully
+LOG00085,2026-08-25T01:40:26,TransferAgent,TRANSFER_STATUS_UPDATED,transfer,T00036,SUCCESS,Shortage detected and prioritized
+LOG00086,2026-08-25T15:09:19,ExpiryAgent,TRANSFER_STATUS_UPDATED,demand,D0024,SUCCESS,Candidate matched for redistribution
+LOG00087,2026-07-21T01:40:19,TransferAgent,SALES_VELOCITY_CALCULATED,transfer,T00006,SUCCESS,Shortage detected and prioritized
+LOG00088,2026-08-31T10:36:59,CharityFallbackAgent,TRANSFER_CREATED,charity,C010,SUCCESS,Transaction recorded for audit
+LOG00089,2026-07-18T08:55:29,DemandAgent,BATCH_SCANNED,transfer,T00001,INFO,Transaction recorded for audit
+LOG00090,2026-08-17T03:47:04,DemandAgent,EXPIRY_ALERT_CREATED,sale,S00504,SUCCESS,Rule evaluated successfully
+LOG00091,2026-08-27T18:55:25,TransferAgent,TRANSFER_STATUS_UPDATED,transfer,T00033,SUCCESS,Fallback route evaluated
+LOG00092,2026-07-15T02:16:03,TransferAgent,DEMAND_EVALUATED,sale,S00268,SUCCESS,Near-expiry batch identified
+LOG00093,2026-08-22T08:30:19,InventoryAgent,MATCH_CREATED,sale,S00112,INFO,Shortage detected and prioritized
+LOG00094,2026-08-04T04:23:45,CharityFallbackAgent,TRANSFER_STATUS_UPDATED,sale,S00316,SUCCESS,Candidate matched for redistribution
+LOG00095,2026-06-30T11:04:34,AuditAgent,AUDIT_RECORD_CREATED,batch,B0028,SUCCESS,Near-expiry batch identified
+LOG00096,2026-07-22T01:46:56,ExpiryAgent,TRANSFER_CREATED,demand,D0026,SUCCESS,Near-expiry batch identified
+LOG00097,2026-09-12T05:05:22,InventoryAgent,BATCH_SCANNED,batch,B0029,WARNING,Fallback route evaluated
+LOG00098,2026-08-23T02:43:48,InventoryAgent,SALES_VELOCITY_CALCULATED,sale,S00455,SUCCESS,Rule evaluated successfully
+LOG00099,2026-07-28T01:50:37,DemandAgent,AUDIT_RECORD_CREATED,transfer,T00025,SUCCESS,Shortage detected and prioritized
+LOG00100,2026-08-29T06:48:50,MatchingAgent,TRANSFER_CREATED,transfer,T00019,WARNING,Near-expiry batch identified
+LOG00101,2026-09-18T03:11:37,MatchingAgent,CHARITY_FALLBACK_TRIGGERED,sale,S00205,INFO,Transaction recorded for audit
+LOG00102,2026-08-11T17:27:53,CharityFallbackAgent,DONATION_CREATED,demand,D0021,SUCCESS,Shortage detected and prioritized
+LOG00103,2026-07-11T07:58:27,InventoryAgent,TRANSFER_CREATED,batch,B0061,SUCCESS,Transaction recorded for audit
+LOG00104,2026-08-26T09:42:14,CharityFallbackAgent,BATCH_SCANNED,sale,S00398,WARNING,Shortage detected and prioritized
+LOG00105,2026-06-28T13:03:46,CharityFallbackAgent,BATCH_SCANNED,charity,C010,WARNING,Shortage detected and prioritized
+LOG00106,2026-09-03T17:51:22,InventoryAgent,SALES_VELOCITY_CALCULATED,batch,B0030,SUCCESS,Fallback route evaluated
+LOG00107,2026-08-31T04:45:03,MatchingAgent,DEMAND_EVALUATED,demand,D0010,WARNING,Shortage detected and prioritized
+LOG00108,2026-09-16T13:36:07,ExpiryAgent,CHARITY_FALLBACK_TRIGGERED,donation,DN0009,INFO,Transaction recorded for audit
+LOG00109,2026-07-25T23:38:09,MatchingAgent,DEMAND_EVALUATED,charity,C007,SUCCESS,Candidate matched for redistribution
+LOG00110,2026-09-03T00:03:55,ExpiryAgent,AUDIT_RECORD_CREATED,transfer,T00021,WARNING,Rule evaluated successfully
+LOG00111,2026-07-24T05:07:14,MatchingAgent,SALES_VELOCITY_CALCULATED,sale,S00328,INFO,Rule evaluated successfully
+LOG00112,2026-08-23T07:38:03,DemandAgent,SALES_VELOCITY_CALCULATED,demand,D0001,INFO,Candidate matched for redistribution
+LOG00113,2026-08-04T17:57:09,TransferAgent,TRANSFER_STATUS_UPDATED,donation,DN0011,SUCCESS,Rule evaluated successfully
+LOG00114,2026-08-19T00:43:51,MatchingAgent,TRANSFER_CREATED,batch,B0010,WARNING,Rule evaluated successfully
+LOG00115,2026-08-13T21:37:40,CharityFallbackAgent,DONATION_CREATED,charity,C001,SUCCESS,Shortage detected and prioritized
+LOG00116,2026-08-30T06:55:01,TransferAgent,EXPIRY_ALERT_CREATED,charity,C004,SUCCESS,Near-expiry batch identified
+LOG00117,2026-07-14T20:00:45,AuditAgent,DONATION_CREATED,sale,S00370,WARNING,Near-expiry batch identified
+LOG00118,2026-08-31T03:31:52,InventoryAgent,MATCH_CREATED,sale,S00299,SUCCESS,Near-expiry batch identified
+LOG00119,2026-07-27T17:48:26,ExpiryAgent,TRANSFER_CREATED,batch,B0083,SUCCESS,Candidate matched for redistribution
+LOG00120,2026-07-30T01:37:28,MatchingAgent,DONATION_CREATED,transfer,T00004,SUCCESS,Transaction recorded for audit
+LOG00121,2026-08-12T19:42:48,TransferAgent,AUDIT_RECORD_CREATED,sale,S00063,WARNING,Candidate matched for redistribution
+LOG00122,2026-07-27T10:52:51,InventoryAgent,CHARITY_FALLBACK_TRIGGERED,charity,C010,SUCCESS,Candidate matched for redistribution
+LOG00123,2026-08-29T07:01:00,DemandAgent,BATCH_SCANNED,transfer,T00010,SUCCESS,Transaction recorded for audit
+LOG00124,2026-09-17T03:10:06,TransferAgent,EXPIRY_ALERT_CREATED,transfer,T00034,WARNING,Fallback route evaluated
+LOG00125,2026-07-21T15:16:37,InventoryAgent,CHARITY_FALLBACK_TRIGGERED,sale,S00581,SUCCESS,Fallback route evaluated
+LOG00126,2026-08-12T14:57:36,MatchingAgent,CHARITY_FALLBACK_TRIGGERED,charity,C007,INFO,Candidate matched for redistribution
+LOG00127,2026-07-08T22:09:37,ExpiryAgent,CHARITY_FALLBACK_TRIGGERED,batch,B0051,SUCCESS,Shortage detected and prioritized
+LOG00128,2026-09-23T12:18:04,AuditAgent,TRANSFER_CREATED,demand,D0007,INFO,Shortage detected and prioritized
+LOG00129,2026-08-22T15:10:27,CharityFallbackAgent,SALES_VELOCITY_CALCULATED,sale,S00217,SUCCESS,Fallback route evaluated
+LOG00130,2026-09-05T02:23:20,MatchingAgent,EXPIRY_ALERT_CREATED,transfer,T00012,SUCCESS,Candidate matched for redistribution
+LOG00131,2026-09-21T16:37:07,InventoryAgent,TRANSFER_STATUS_UPDATED,charity,C009,SUCCESS,Transaction recorded for audit
+LOG00132,2026-09-22T08:48:31,MatchingAgent,DONATION_CREATED,donation,DN0023,SUCCESS,Shortage detected and prioritized
+LOG00133,2026-06-29T03:17:27,MatchingAgent,BATCH_SCANNED,transfer,T00015,SUCCESS,Shortage detected and prioritized
+LOG00134,2026-07-04T14:54:34,CharityFallbackAgent,BATCH_SCANNED,charity,C001,SUCCESS,Shortage detected and prioritized
+LOG00135,2026-07-10T11:07:17,ExpiryAgent,TRANSFER_CREATED,transfer,T00017,SUCCESS,Transaction recorded for audit
+LOG00136,2026-07-21T22:42:17,TransferAgent,AUDIT_RECORD_CREATED,batch,B0001,SUCCESS,Transaction recorded for audit
+LOG00137,2026-09-12T17:32:22,InventoryAgent,TRANSFER_STATUS_UPDATED,demand,D0018,SUCCESS,Candidate matched for redistribution
+LOG00138,2026-07-21T08:44:56,InventoryAgent,AUDIT_RECORD_CREATED,transfer,T00002,SUCCESS,Shortage detected and prioritized
+LOG00139,2026-08-03T14:43:51,TransferAgent,BATCH_SCANNED,donation,DN0044,SUCCESS,Fallback route evaluated
+LOG00140,2026-08-18T06:11:20,AuditAgent,EXPIRY_ALERT_CREATED,sale,S00100,WARNING,Candidate matched for redistribution
+LOG00141,2026-06-30T12:13:12,ExpiryAgent,SALES_VELOCITY_CALCULATED,sale,S00229,SUCCESS,Shortage detected and prioritized
+LOG00142,2026-07-13T10:42:21,TransferAgent,SALES_VELOCITY_CALCULATED,transfer,T00031,WARNING,Rule evaluated successfully
+LOG00143,2026-06-30T13:53:46,CharityFallbackAgent,TRANSFER_CREATED,transfer,T00013,WARNING,Near-expiry batch identified
+LOG00144,2026-09-07T11:31:09,AuditAgent,DEMAND_EVALUATED,batch,B0063,SUCCESS,Near-expiry batch identified
+LOG00145,2026-08-21T07:37:24,AuditAgent,DEMAND_EVALUATED,donation,DN0040,INFO,Near-expiry batch identified
+LOG00146,2026-08-02T17:22:53,TransferAgent,BATCH_SCANNED,batch,B0069,WARNING,Candidate matched for redistribution
+LOG00147,2026-09-23T00:09:00,ExpiryAgent,MATCH_CREATED,sale,S00320,SUCCESS,Rule evaluated successfully
+LOG00148,2026-09-20T10:51:25,MatchingAgent,DONATION_CREATED,charity,C005,SUCCESS,Near-expiry batch identified
+LOG00149,2026-08-11T06:51:37,DemandAgent,CHARITY_FALLBACK_TRIGGERED,batch,B0030,WARNING,Fallback route evaluated
+LOG00150,2026-09-04T04:29:03,MatchingAgent,BATCH_SCANNED,transfer,T00004,SUCCESS,Rule evaluated successfully
+LOG00151,2026-06-29T04:12:56,TransferAgent,DONATION_CREATED,transfer,T00031,SUCCESS,Transaction recorded for audit
+LOG00152,2026-06-30T22:56:56,InventoryAgent,TRANSFER_CREATED,transfer,T00018,INFO,Rule evaluated successfully
+LOG00153,2026-07-22T22:29:22,InventoryAgent,TRANSFER_CREATED,batch,B0014,WARNING,Candidate matched for redistribution
+LOG00154,2026-08-11T14:55:07,MatchingAgent,DEMAND_EVALUATED,batch,B0071,SUCCESS,Rule evaluated successfully
+LOG00155,2026-07-02T03:14:25,InventoryAgent,AUDIT_RECORD_CREATED,charity,C004,SUCCESS,Transaction recorded for audit
+LOG00156,2026-08-27T16:37:47,MatchingAgent,TRANSFER_CREATED,transfer,T00003,SUCCESS,Transaction recorded for audit
+LOG00157,2026-08-16T15:30:36,ExpiryAgent,SALES_VELOCITY_CALCULATED,batch,B0006,INFO,Fallback route evaluated
+LOG00158,2026-08-22T03:23:03,MatchingAgent,TRANSFER_STATUS_UPDATED,sale,S00411,INFO,Near-expiry batch identified
+LOG00159,2026-07-04T06:04:20,InventoryAgent,DEMAND_EVALUATED,charity,C010,WARNING,Transaction recorded for audit
+LOG00160,2026-07-31T06:35:58,CharityFallbackAgent,CHARITY_FALLBACK_TRIGGERED,demand,D0009,SUCCESS,Near-expiry batch identified
+LOG00161,2026-07-31T01:40:25,InventoryAgent,TRANSFER_CREATED,charity,C008,WARNING,Fallback route evaluated
+LOG00162,2026-06-29T22:30:33,InventoryAgent,CHARITY_FALLBACK_TRIGGERED,charity,C001,SUCCESS,Transaction recorded for audit
+LOG00163,2026-09-05T18:24:25,AuditAgent,DONATION_CREATED,transfer,T00021,SUCCESS,Rule evaluated successfully
+LOG00164,2026-07-23T08:06:30,CharityFallbackAgent,CHARITY_FALLBACK_TRIGGERED,transfer,T00029,SUCCESS,Near-expiry batch identified
+LOG00165,2026-07-30T11:30:26,InventoryAgent,DONATION_CREATED,charity,C001,WARNING,Fallback route evaluated
+LOG00166,2026-09-25T03:18:33,AuditAgent,AUDIT_RECORD_CREATED,donation,DN0014,SUCCESS,Shortage detected and prioritized
+LOG00167,2026-09-19T08:06:58,AuditAgent,DONATION_CREATED,demand,D0024,SUCCESS,Rule evaluated successfully
+LOG00168,2026-08-13T12:55:48,AuditAgent,TRANSFER_CREATED,donation,DN0058,INFO,Candidate matched for redistribution
+LOG00169,2026-08-04T03:53:39,MatchingAgent,AUDIT_RECORD_CREATED,sale,S00124,SUCCESS,Rule evaluated successfully
+LOG00170,2026-08-03T01:41:34,ExpiryAgent,AUDIT_RECORD_CREATED,batch,B0058,WARNING,Transaction recorded for audit
+LOG00171,2026-09-19T20:08:32,TransferAgent,AUDIT_RECORD_CREATED,transfer,T00009,WARNING,Fallback route evaluated
+LOG00172,2026-08-15T18:21:14,TransferAgent,CHARITY_FALLBACK_TRIGGERED,donation,DN0019,SUCCESS,Candidate matched for redistribution
+LOG00173,2026-08-04T21:56:14,ExpiryAgent,EXPIRY_ALERT_CREATED,demand,D0014,SUCCESS,Transaction recorded for audit
+LOG00174,2026-09-09T23:40:08,DemandAgent,EXPIRY_ALERT_CREATED,donation,DN0036,WARNING,Fallback route evaluated
+LOG00175,2026-07-02T15:11:59,ExpiryAgent,EXPIRY_ALERT_CREATED,demand,D0034,SUCCESS,Rule evaluated successfully
+LOG00176,2026-07-02T02:03:39,DemandAgent,TRANSFER_CREATED,sale,S00257,SUCCESS,Fallback route evaluated
+LOG00177,2026-09-21T13:03:33,AuditAgent,DONATION_CREATED,batch,B0079,WARNING,Transaction recorded for audit
+LOG00178,2026-08-20T01:42:37,TransferAgent,CHARITY_FALLBACK_TRIGGERED,transfer,T00001,SUCCESS,Fallback route evaluated
+LOG00179,2026-07-31T08:12:43,ExpiryAgent,TRANSFER_STATUS_UPDATED,donation,DN0029,SUCCESS,Candidate matched for redistribution
+LOG00180,2026-09-03T18:42:30,InventoryAgent,CHARITY_FALLBACK_TRIGGERED,batch,B0055,SUCCESS,Shortage detected and prioritized
+LOG00181,2026-07-28T05:38:10,InventoryAgent,DEMAND_EVALUATED,demand,D0020,SUCCESS,Transaction recorded for audit
+LOG00182,2026-08-16T19:07:44,DemandAgent,DEMAND_EVALUATED,donation,DN0035,SUCCESS,Shortage detected and prioritized
+LOG00183,2026-08-28T07:46:04,ExpiryAgent,TRANSFER_STATUS_UPDATED,demand,D0014,SUCCESS,Transaction recorded for audit
+LOG00184,2026-08-12T16:13:34,DemandAgent,AUDIT_RECORD_CREATED,donation,DN0059,INFO,Shortage detected and prioritized
+LOG00185,2026-07-18T10:17:50,InventoryAgent,EXPIRY_ALERT_CREATED,demand,D0029,SUCCESS,Shortage detected and prioritized
+LOG00186,2026-07-22T02:59:53,InventoryAgent,DEMAND_EVALUATED,donation,DN0043,INFO,Rule evaluated successfully
+LOG00187,2026-08-30T19:34:44,AuditAgent,CHARITY_FALLBACK_TRIGGERED,charity,C008,SUCCESS,Rule evaluated successfully
+LOG00188,2026-09-16T01:58:33,DemandAgent,TRANSFER_CREATED,donation,DN0027,INFO,Transaction recorded for audit
+LOG00189,2026-08-05T15:45:57,MatchingAgent,BATCH_SCANNED,transfer,T00005,SUCCESS,Shortage detected and prioritized
+LOG00190,2026-07-23T03:51:51,MatchingAgent,TRANSFER_CREATED,donation,DN0026,INFO,Candidate matched for redistribution
+LOG00191,2026-07-19T08:00:18,DemandAgent,CHARITY_FALLBACK_TRIGGERED,donation,DN0001,SUCCESS,Rule evaluated successfully
+LOG00192,2026-09-25T20:51:07,CharityFallbackAgent,CHARITY_FALLBACK_TRIGGERED,donation,DN0048,SUCCESS,Near-expiry batch identified
+LOG00193,2026-07-05T18:39:41,DemandAgent,DEMAND_EVALUATED,sale,S00259,WARNING,Near-expiry batch identified
+LOG00194,2026-07-05T20:00:45,InventoryAgent,TRANSFER_CREATED,charity,C010,SUCCESS,Shortage detected and prioritized
+LOG00195,2026-09-09T23:51:54,DemandAgent,SALES_VELOCITY_CALCULATED,demand,D0013,SUCCESS,Fallback route evaluated
+LOG00196,2026-07-03T11:07:45,ExpiryAgent,AUDIT_RECORD_CREATED,sale,S00581,SUCCESS,Shortage detected and prioritized
+LOG00197,2026-08-25T08:03:55,ExpiryAgent,CHARITY_FALLBACK_TRIGGERED,demand,D0022,SUCCESS,Shortage detected and prioritized
+LOG00198,2026-07-25T20:05:08,InventoryAgent,DEMAND_EVALUATED,charity,C006,SUCCESS,Transaction recorded for audit
+LOG00199,2026-07-07T02:47:02,ExpiryAgent,SALES_VELOCITY_CALCULATED,batch,B0065,WARNING,Shortage detected and prioritized
+LOG00200,2026-07-18T19:38:56,TransferAgent,DEMAND_EVALUATED,demand,D0019,INFO,Shortage detected and prioritized
+LOG00201,2026-07-23T00:23:08,ExpiryAgent,MATCH_CREATED,donation,DN0011,WARNING,Fallback route evaluated
+LOG00202,2026-07-03T05:19:22,ExpiryAgent,DONATION_CREATED,demand,D0032,SUCCESS,Candidate matched for redistribution
+LOG00203,2026-09-20T07:31:42,CharityFallbackAgent,TRANSFER_STATUS_UPDATED,transfer,T00003,SUCCESS,Transaction recorded for audit
+LOG00204,2026-07-21T23:04:02,AuditAgent,TRANSFER_CREATED,charity,C009,SUCCESS,Fallback route evaluated
+LOG00205,2026-07-04T02:50:02,CharityFallbackAgent,TRANSFER_CREATED,transfer,T00023,INFO,Near-expiry batch identified
+LOG00206,2026-07-10T00:14:24,CharityFallbackAgent,DEMAND_EVALUATED,transfer,T00033,SUCCESS,Candidate matched for redistribution
+LOG00207,2026-09-02T05:43:45,MatchingAgent,AUDIT_RECORD_CREATED,charity,C004,INFO,Transaction recorded for audit
+LOG00208,2026-07-26T17:26:26,DemandAgent,AUDIT_RECORD_CREATED,sale,S00421,WARNING,Fallback route evaluated
+LOG00209,2026-09-05T04:54:18,ExpiryAgent,EXPIRY_ALERT_CREATED,batch,B0074,WARNING,Near-expiry batch identified
+LOG00210,2026-07-11T20:31:12,ExpiryAgent,BATCH_SCANNED,charity,C010,INFO,Candidate matched for redistribution
+LOG00211,2026-08-28T14:57:20,CharityFallbackAgent,DEMAND_EVALUATED,donation,DN0047,INFO,Fallback route evaluated
+LOG00212,2026-07-12T02:30:23,DemandAgent,CHARITY_FALLBACK_TRIGGERED,transfer,T00013,SUCCESS,Fallback route evaluated
+LOG00213,2026-09-13T06:27:35,TransferAgent,AUDIT_RECORD_CREATED,donation,DN0006,SUCCESS,Fallback route evaluated
+LOG00214,2026-07-18T00:02:37,AuditAgent,CHARITY_FALLBACK_TRIGGERED,donation,DN0028,INFO,Near-expiry batch identified
+LOG00215,2026-08-12T21:26:47,AuditAgent,AUDIT_RECORD_CREATED,batch,B0055,SUCCESS,Shortage detected and prioritized
+LOG00216,2026-07-11T19:47:47,TransferAgent,TRANSFER_CREATED,sale,S00008,INFO,Transaction recorded for audit
+LOG00217,2026-08-30T11:30:05,TransferAgent,TRANSFER_STATUS_UPDATED,batch,B0020,WARNING,Shortage detected and prioritized
+LOG00218,2026-07-09T10:01:58,ExpiryAgent,CHARITY_FALLBACK_TRIGGERED,sale,S00566,SUCCESS,Shortage detected and prioritized
+LOG00219,2026-07-14T12:32:15,AuditAgent,CHARITY_FALLBACK_TRIGGERED,charity,C005,SUCCESS,Candidate matched for redistribution
+LOG00220,2026-07-22T14:35:02,AuditAgent,TRANSFER_STATUS_UPDATED,donation,DN0041,SUCCESS,Candidate matched for redistribution
+LOG00221,2026-07-27T21:51:15,TransferAgent,SALES_VELOCITY_CALCULATED,batch,B0034,INFO,Near-expiry batch identified
+LOG00222,2026-07-09T23:53:26,CharityFallbackAgent,TRANSFER_CREATED,charity,C001,SUCCESS,Transaction recorded for audit
+LOG00223,2026-07-21T10:24:47,DemandAgent,BATCH_SCANNED,donation,DN0044,SUCCESS,Candidate matched for redistribution
+LOG00224,2026-07-04T00:00:37,DemandAgent,SALES_VELOCITY_CALCULATED,demand,D0026,WARNING,Rule evaluated successfully
+LOG00225,2026-06-27T02:29:53,InventoryAgent,EXPIRY_ALERT_CREATED,demand,D0023,SUCCESS,Fallback route evaluated
+LOG00226,2026-09-01T16:33:26,TransferAgent,AUDIT_RECORD_CREATED,batch,B0034,WARNING,Shortage detected and prioritized
+LOG00227,2026-08-13T04:15:36,AuditAgent,EXPIRY_ALERT_CREATED,demand,D0017,SUCCESS,Shortage detected and prioritized
+LOG00228,2026-07-29T16:46:27,CharityFallbackAgent,BATCH_SCANNED,transfer,T00025,SUCCESS,Shortage detected and prioritized
+LOG00229,2026-08-04T12:51:21,CharityFallbackAgent,EXPIRY_ALERT_CREATED,batch,B0034,SUCCESS,Fallback route evaluated
+LOG00230,2026-09-03T17:21:03,MatchingAgent,TRANSFER_STATUS_UPDATED,sale,S00276,SUCCESS,Transaction recorded for audit
+LOG00231,2026-08-26T09:39:47,DemandAgent,MATCH_CREATED,sale,S00365,INFO,Fallback route evaluated
+LOG00232,2026-09-25T19:42:52,InventoryAgent,DONATION_CREATED,demand,D0032,WARNING,Shortage detected and prioritized
+LOG00233,2026-08-06T08:05:10,AuditAgent,AUDIT_RECORD_CREATED,sale,S00539,WARNING,Shortage detected and prioritized
+LOG00234,2026-08-06T06:21:51,TransferAgent,SALES_VELOCITY_CALCULATED,charity,C006,INFO,Fallback route evaluated
+LOG00235,2026-09-13T11:50:55,MatchingAgent,AUDIT_RECORD_CREATED,demand,D0017,WARNING,Shortage detected and prioritized
+LOG00236,2026-08-10T06:41:45,TransferAgent,CHARITY_FALLBACK_TRIGGERED,sale,S00382,SUCCESS,Fallback route evaluated
+LOG00237,2026-09-09T20:58:03,ExpiryAgent,MATCH_CREATED,batch,B0035,SUCCESS,Near-expiry batch identified
+LOG00238,2026-09-24T06:25:48,TransferAgent,DONATION_CREATED,sale,S00530,WARNING,Fallback route evaluated
+LOG00239,2026-09-19T14:30:19,InventoryAgent,DEMAND_EVALUATED,batch,B0028,SUCCESS,Shortage detected and prioritized
+LOG00240,2026-08-10T20:24:06,CharityFallbackAgent,TRANSFER_CREATED,demand,D0008,WARNING,Fallback route evaluated
+LOG00241,2026-07-04T23:38:02,CharityFallbackAgent,DEMAND_EVALUATED,demand,D0033,SUCCESS,Near-expiry batch identified
+LOG00242,2026-07-09T10:25:55,TransferAgent,DEMAND_EVALUATED,sale,S00346,SUCCESS,Candidate matched for redistribution
+LOG00243,2026-08-13T08:18:32,MatchingAgent,TRANSFER_STATUS_UPDATED,charity,C010,SUCCESS,Transaction recorded for audit
+LOG00244,2026-07-12T18:58:00,TransferAgent,CHARITY_FALLBACK_TRIGGERED,sale,S00024,SUCCESS,Candidate matched for redistribution
+LOG00245,2026-09-04T14:27:21,InventoryAgent,SALES_VELOCITY_CALCULATED,batch,B0061,WARNING,Rule evaluated successfully
+LOG00246,2026-09-12T09:33:20,CharityFallbackAgent,DEMAND_EVALUATED,batch,B0084,INFO,Transaction recorded for audit
+LOG00247,2026-09-09T04:46:46,CharityFallbackAgent,DEMAND_EVALUATED,batch,B0005,WARNING,Near-expiry batch identified
+LOG00248,2026-09-08T19:38:05,DemandAgent,AUDIT_RECORD_CREATED,donation,DN0041,SUCCESS,Near-expiry batch identified
+LOG00249,2026-07-18T08:16:10,AuditAgent,SALES_VELOCITY_CALCULATED,transfer,T00017,SUCCESS,Rule evaluated successfully
+LOG00250,2026-07-21T04:57:45,MatchingAgent,TRANSFER_CREATED,transfer,T00031,INFO,Shortage detected and prioritized

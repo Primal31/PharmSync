@@ -1,0 +1,20 @@
+import { Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Inventory from './pages/Inventory'
+import POS from './pages/POS'
+import Sales from './pages/Sales'
+import Restock from './pages/Restock'
+import RoleDashboard from './pages/RoleDashboard'
+import ProtectedRoute from './components/ProtectedRoute'
+import Transfers from './pages/Transfers'
+import Analytics from './pages/Analytics'
+import ClinicDashboard from './pages/ClinicDashboard'
+import PatientMarketplace from './pages/PatientMarketplace'
+import MyOrders from './pages/MyOrders'
+import PharmacyOrders from './pages/PharmacyOrders'
+ function RoutedApp(){return <Routes><Route path="/" element={<Home/>}/><Route path="/login" element={<Login/>}/><Route path="/register" element={<Register/>}/><Route path="/inventory" element={<ProtectedRoute allow="retail_chemist"><Inventory/></ProtectedRoute>}/><Route path="/inventory/restock" element={<ProtectedRoute allow="retail_chemist"><Restock/></ProtectedRoute>}/><Route path="/pos" element={<ProtectedRoute allow="retail_chemist"><POS/></ProtectedRoute>}/><Route path="/sales" element={<ProtectedRoute allow="retail_chemist"><Sales/></ProtectedRoute>}/><Route path="/pharmacy/orders" element={<ProtectedRoute allow="retail_chemist"><PharmacyOrders/></ProtectedRoute>}/><Route path="/clinic" element={<ProtectedRoute allow="clinic_phc"><ClinicDashboard/></ProtectedRoute>}/><Route path="/charity" element={<ProtectedRoute allow="charity_ngo"><RoleDashboard role="charity_ngo"/></ProtectedRoute>}/><Route path="/transfers" element={<ProtectedRoute allow={['retail_chemist','clinic_phc']}><Transfers/></ProtectedRoute>}/><Route path="/analytics" element={<ProtectedRoute allow={['retail_chemist','clinic_phc','charity_ngo']}><Analytics/></ProtectedRoute>}/><Route path="/medicines" element={<ProtectedRoute allow="patient"><PatientMarketplace/></ProtectedRoute>}/><Route path="/my-orders" element={<ProtectedRoute allow="patient"><MyOrders/></ProtectedRoute>}/><Route path="*" element={<Home/>}/></Routes>}
+export default function App(){return <AuthProvider><RoutedApp/></AuthProvider>}
+

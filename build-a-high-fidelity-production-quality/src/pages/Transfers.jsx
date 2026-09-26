@@ -1,0 +1,78 @@
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Activity, ArrowLeft, ArrowRightLeft, Check, CircleAlert, Clock3, HeartHandshake, Package, RefreshCw, ShieldCheck, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import { useAuth } from '../context/AuthContext'
+import api from '../services/api'
+
+const quantity = value => Number(value || 0).toLocaleString('en-IN')
+const distance = value => value == null ? 'Distance unavailable' : `${Number(value).toFixed(2)} km`
+const statusKey = value => String(value || '').toLowerCase().replace(/[ -]/g, '_')
+const priorityTone = value => ['critical','high'].includes(String(value || '').toLowerCase()) ? 'critical' : 'normal'
+
+export default function Transfers() {
+  const { user } = useAuth()
+  const clinic = user?.role === 'clinic_phc'
+  const [matches,setMatches]=useState([]);const [transfers,setTransfers]=useState([]);const [summary,setSummary]=useState({})
+  const [demands,setDemands]=useState([]);const [charityBatches,setCharityBatches]=useState([])
+  const [loading,setLoading]=useState(true);const [busy,setBusy]=useState('');const [error,setError]=useState('');const [notice,setNotice]=useState('');const [selected,setSelected]=useState(null)
+  const load=useCallback(async()=>{
+    setLoading(true);setError('');
+    try{
+      const [opp,transfer,stats]=await Promise.all([api.get('/transfers/opportunities'),api.get('/transfers'),api.get('/transfers/summary')])
+      setMatches(opp.data.matches||[]);setTransfers(transfer.data.transfers||[]);setSummary(stats.data.summary||{})
+      if(clinic){try{const {data}=await api.get('/transfers/demand');setDemands(data.demands||[])}catch{setDemands([])}}
+      else {try{const {data}=await api.get('/transfers/charity-fallback');setCharityBatches(data.batches||[])}catch{setCharityBatches([])}}
+    }catch(e){setError(e.userMessage||'Unable to load redistribution data from PharmSync.')}
+    finally{setLoading(false)}
+  },[clinic])
+  useEffect(()=>{load()},[load])
+  const pending=useMemo(()=>transfers.filter(t=>statusKey(t.status)==='pending_approval'),[transfers])
+  const act=async(key,fn,success)=>{
+    setBusy(key);setError('');setNotice('')
+    try{const result=await fn();setNotice(success(result));setSelected(null);await load()}
+    catch(e){setError(e.response?.data?.detail||e.userMessage||'Unable to update this transfer.')}
+    finally{setBusy('')}
+  }
+  const approveMatch=match=>{
+    const ok=window.confirm(`Approve ${match.suggested_transfer_quantity} units of ${match.medicine_name}? The source batch will decrease and clinic inventory will update in MySQL.`)
+    if(!ok)return
+    act(match.match_id,()=>api.post(`/transfers/opportunities/${match.match_id}/approve`),r=>`Transfer approved. Source now has ${quantity(r.data.source_quantity_remaining)} units remaining.`)
+  }
+  const requestMatch=match=>act(match.match_id,()=>api.post(`/transfers/opportunities/${match.match_id}/request`),()=>`Request sent to ${match.source_pharmacy_name} for review.`)
+  const approveRequest=t=>{
+    const ok=window.confirm(`Approve ${quantity(t.quantity)} units of ${t.medicine_name}? Stock will move from ${t.source_pharmacy_name} to ${t.destination_clinic_name}.`)
+    if(!ok)return
+    act(t.transfer_id,()=>api.post(`/transfers/${t.transfer_id}/approve`),()=>`Transfer ${t.transfer_id} approved and recorded.`)
+  }
+  const rejectRequest=t=>act(t.transfer_id,()=>api.post(`/transfers/${t.transfer_id}/reject`),()=>`Transfer request ${t.transfer_id} rejected.`)
+  const nextStatus=async t=>{
+    const current=statusKey(t.status)
+    const next=clinic?(current==='in_transit'?'RECEIVED':current==='received'?'COMPLETED':null):(current==='approved'?'IN_TRANSIT':null)
+    if(!next)return
+    await act(t.transfer_id,()=>api.patch(`/transfers/${t.transfer_id}/status`,{status:next}),()=>`Transfer marked ${next.replaceAll('_',' ').toLowerCase()}.`)
+  }
+  const cardStats=[
+    ['Redistribution opportunities',summary.redistribution_opportunities||0,ArrowRightLeft,'green'],
+    ['High priority shortages',summary.high_priority_shortages||0,CircleAlert,'amber'],
+    ['Expiry-risk stock',summary.expiry_risk_stock||0,Package,'cyan'],
+    ['Pending transfers',summary.pending_transfers||0,Clock3,'blue'],
+    ['Completed transfers',summary.completed_transfers||0,Check,'green'],
+  ]
+  return <div className="site-shell module-shell"><Navbar/><main className="module-page wrap transfers-page">
+    <div className="pos-top"><Link to={clinic?'/clinic':'/inventory'} className="back-link"><ArrowLeft size={14}/> {clinic?'Clinic dashboard':'Inventory'}</Link><span className="eyebrow">VERIFIED HEALTHCARE NETWORK</span><span className="pos-mode"><Activity size={14}/> RULE-BASED MATCHING</span></div>
+    <div className="module-heading"><div><h1>{clinic?'Medicine demand & transfers':'P2P redistribution'}</h1><p>{clinic?'Review your imported medicine shortages and request verified nearby supply.':'Expiry-risk pharmacy stock matched to verified healthcare shortages.'}</p></div><button className="button button-quiet" onClick={load} disabled={loading}><RefreshCw size={14} className={loading?'spinner-icon':''}/> Refresh</button></div>
+    {error&&<div className="module-error" role="alert"><CircleAlert size={15}/>{error}<button onClick={()=>setError('')} aria-label="Dismiss">×</button></div>}{notice&&<div className="module-notice"><Check size={15}/>{notice}</div>}
+    <div className="transfer-kpis">{cardStats.map(([label,value,Icon,tone])=><article key={label} className={tone}><span><Icon size={16}/></span><small>{label}</small><b>{loading?'—':quantity(value)}</b></article>)}</div>
+    {clinic&&<section className="inventory-panel transfer-panel"><div className="inventory-panel-head"><div><span className="tiny-label">YOUR NODE · MYSQL DEMAND</span><h2>Medicine shortages <span>{demands.length}</span></h2></div><span className="transfer-live"><i/> Live demand records</span></div>{demands.length?<div className="table-scroll"><table className="inventory-table transfer-table"><thead><tr><th>Medicine</th><th>Form</th><th>Current stock</th><th>Daily demand</th><th>Shortage</th><th>Priority</th></tr></thead><tbody>{demands.map(d=><tr key={d.demand_id}><td><b>{d.medicine_name}</b><small>{d.medicine_id} · {d.demand_id}</small></td><td>{d.form}</td><td>{quantity(d.current_stock)}</td><td>{quantity(d.daily_demand)} / day</td><td><b>{quantity(d.shortage_quantity)}</b></td><td><span className={`priority-pill ${priorityTone(d.priority)}`}>{d.priority}</span></td></tr>)}</tbody></table></div>:<div className="transfer-empty">{error.includes('not linked')?'Your account is not linked to a verified healthcare node. Ask a PharmSync administrator to link the correct pharmacy_nodes.node_id.':'No open medicine demand records for this clinic.'}</div>}</section>}
+    <section className="inventory-panel transfer-panel"><div className="inventory-panel-head"><div><span className="tiny-label">DETERMINISTIC MATCHES · VERIFIED NODES ONLY</span><h2>{clinic?'Potential PharmSync sources':'Your inventory opportunities'} <span>{matches.length}</span></h2></div><span className="transfer-live"><ShieldCheck size={14}/> Review before stock moves</span></div>
+      {matches.length?<div className="table-scroll"><table className="inventory-table transfer-table"><thead><tr><th>Medicine</th><th>Source</th><th>Destination</th><th>Available</th><th>Shortage</th><th>Days left</th><th>Distance</th><th>Priority</th><th>Suggested</th><th>Status</th><th>Action</th></tr></thead><tbody>{matches.map(m=><tr key={m.match_id}><td><b>{m.medicine_name}</b><small>{m.medicine_id} · {m.batch_number}</small></td><td>{m.source_pharmacy_name}<small>{m.source_city}, {m.source_state}</small></td><td>{m.destination_clinic_name}<small>{m.destination_city}, {m.destination_state}</small></td><td>{quantity(m.available_quantity)}</td><td>{quantity(m.shortage_quantity)}</td><td>{m.days_left} days</td><td>{distance(m.distance_kilometer)}</td><td><span className={`priority-pill ${priorityTone(m.priority)}`}>{m.priority}</span></td><td><b>{quantity(m.suggested_transfer_quantity)}</b></td><td><span className="transfer-state suggested">Suggested</span></td><td><div className="transfer-row-actions"><button className="button button-quiet" onClick={()=>setSelected(m)}>View match</button>{clinic?<button className="button button-green" disabled={busy===m.match_id} onClick={()=>requestMatch(m)}>Request</button>:<button className="button button-green" disabled={busy===m.match_id} onClick={()=>approveMatch(m)}>Approve</button>}</div></td></tr>)}</tbody></table></div>:<div className="transfer-empty">{loading?'Finding eligible source batches and verified healthcare shortages…':error.includes('not linked')?'Your account is not linked to a verified network node. Ask a PharmSync administrator to link the correct pharmacy_nodes.node_id.':'No redistribution opportunities detected.'}<small>Matches require exact medicine ID and product name, expiry-risk stock over 30 days from expiry, an active shortage, and verified source and destination nodes.</small></div>}
+    </section>
+    {pending.length>0&&<section className="inventory-panel transfer-panel"><div className="inventory-panel-head"><div><span className="tiny-label">AWAITING SOURCE REVIEW</span><h2>Pending transfer requests <span>{pending.length}</span></h2></div></div><div className="table-scroll"><table className="inventory-table transfer-table"><thead><tr><th>Medicine</th><th>From</th><th>To</th><th>Quantity</th><th>Distance</th><th>Requested</th><th>Action</th></tr></thead><tbody>{pending.map(t=><tr key={t.transfer_id}><td><b>{t.medicine_name}</b><small>{t.batch_id} · {t.transfer_id}</small></td><td>{t.source_pharmacy_name}</td><td>{t.destination_clinic_name}</td><td>{quantity(t.quantity)}</td><td>{distance(t.distance_km)}</td><td><span className="transfer-state pending">Pending approval</span></td><td>{!clinic&&<div className="transfer-row-actions"><button className="button button-green" disabled={busy===t.transfer_id} onClick={()=>approveRequest(t)}>Approve</button><button className="button button-quiet" disabled={busy===t.transfer_id} onClick={()=>rejectRequest(t)}>Reject</button></div>}{clinic&&<button className="button button-quiet" disabled={busy===t.transfer_id} onClick={()=>act(t.transfer_id,()=>api.patch(`/transfers/${t.transfer_id}/status`,{status:'CANCELLED'}),()=>`Request ${t.transfer_id} cancelled.`)}>Cancel request</button>}</td></tr>)}</tbody></table></div></section>}
+    <section className="inventory-panel transfer-panel"><div className="inventory-panel-head"><div><span className="tiny-label">TRANSFER RECEIPTS · MYSQL</span><h2>{clinic?'Incoming & past transfers':'Transfer history'} <span>{transfers.length}</span></h2></div></div>{transfers.length?<div className="table-scroll"><table className="inventory-table transfer-table"><thead><tr><th>Date</th><th>Medicine</th><th>Source</th><th>Destination</th><th>Quantity</th><th>Distance</th><th>Status</th><th>Next step</th></tr></thead><tbody>{transfers.map(t=><tr key={t.transfer_id}><td>{String(t.transfer_date||'').slice(0,10)}</td><td><b>{t.medicine_name}</b><small>{t.batch_id} · {t.transfer_id}</small></td><td>{t.source_pharmacy_name}</td><td>{t.destination_clinic_name}</td><td>{quantity(t.quantity)}</td><td>{distance(t.distance_km)}</td><td><span className={`transfer-state ${statusKey(t.status)}`}>{String(t.status).replaceAll('_',' ')}</span></td><td>{!clinic&&statusKey(t.status)==='approved'&&<button className="button button-quiet" disabled={busy===t.transfer_id} onClick={()=>nextStatus(t)}>Mark in transit <ArrowRightLeft size={13}/></button>}{clinic&&statusKey(t.status)==='in_transit'&&<button className="button button-green" disabled={busy===t.transfer_id} onClick={()=>nextStatus(t)}>Confirm received <Check size={13}/></button>}{clinic&&statusKey(t.status)==='received'&&<button className="button button-quiet" disabled={busy===t.transfer_id} onClick={()=>nextStatus(t)}>Complete receipt <Check size={13}/></button>}</td></tr>)}</tbody></table></div>:<div className="transfer-empty">No transfers recorded for this node yet.</div>}</section>
+    {!clinic&&<section className="inventory-panel transfer-panel charity-panel"><div className="inventory-panel-head"><div><span className="tiny-label">SEPARATE SOCIAL-IMPACT WORKFLOW</span><h2><HeartHandshake size={19}/> Charity fallback inventory <span>{charityBatches.length}</span></h2></div><span className="transfer-live">No automatic donations</span></div>{charityBatches.length?<div className="table-scroll"><table className="inventory-table transfer-table"><thead><tr><th>Medicine</th><th>Quantity</th><th>Days left</th><th>Pharmacy</th><th>Eligibility status</th><th/></tr></thead><tbody>{charityBatches.map(b=><tr key={b.batch_id}><td><b>{b.medicine_name}</b><small>{b.batch_number} · {b.medicine_id}</small></td><td>{quantity(b.quantity)}</td><td>{b.days_left}</td><td>{b.pharmacy_name}</td><td>{b.eligibility_status}</td><td><span className="transfer-state charity">Review charity options</span></td></tr>)}</tbody></table></div>:<div className="transfer-empty">No charity-fallback inventory at this pharmacy. Eligible stock is flagged for a later free redistribution review; it is never donated automatically.</div>}</section>}
+    <div className="module-disclaimer"><ShieldCheck size={14}/> Stock changes only after an authorized approval. Expired and charity-fallback batches are excluded from normal P2P matches.</div>
+  </main>
+  {selected&&<div className="modal-backdrop" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)setSelected(null)}}><section className="modal-card transfer-detail-modal" role="dialog" aria-modal="true" aria-label="Redistribution match details"><div className="modal-head"><div><span className="tiny-label">VERIFIED REDISTRIBUTION MATCH</span><h2>{selected.medicine_name}</h2></div><button className="icon-button" onClick={()=>setSelected(null)} aria-label="Close"><X size={17}/></button></div><div className="transfer-detail-grid"><article><span className="tiny-label">SOURCE</span><b>{selected.source_pharmacy_name}</b><small>{selected.batch_number} · Batch {selected.batch_id}</small><small>Available: {quantity(selected.available_quantity)}</small><small>{selected.days_left} days remaining</small><small>Sales velocity: {Number(selected.daily_velocity).toFixed(2)} units/day</small><small>Status: {selected.expiry_status}</small></article><article><span className="tiny-label">DESTINATION</span><b>{selected.destination_clinic_name}</b><small>Current stock: {quantity(selected.current_stock)}</small><small>Daily demand: {quantity(selected.daily_demand)}</small><small>Shortage: {quantity(selected.shortage_quantity)}</small><small>Priority: {selected.priority}</small></article><article className="transfer-detail-full"><span className="tiny-label">TRANSFER PROPOSAL</span><b>{quantity(selected.suggested_transfer_quantity)} units suggested</b><small>{distance(selected.distance_kilometer)}</small><p>{selected.reason}</p><small>Matches use exact medicine ID and product name. Source inventory is allocated earliest-expiry-first.</small></article></div><div className="modal-actions"><button className="button button-quiet" onClick={()=>setSelected(null)}>Close</button>{clinic?<button className="button button-green" disabled={busy===selected.match_id} onClick={()=>requestMatch(selected)}>Request transfer</button>:<button className="button button-green" disabled={busy===selected.match_id} onClick={()=>approveMatch(selected)}>Approve transfer</button>}</div></section></div>}
+  </div>
+}

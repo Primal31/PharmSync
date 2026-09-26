@@ -1,0 +1,9 @@
+charity_id,node_id,organization_name,city,state,verification_status,service_type,contact_email,contact_phone
+C001,N011,Community Health Trust 01,Bengaluru,Karnataka,Verified,Community Health Center,camp01@pharmsync.example,+91-9893592219
+C004,EXT004,Community Health Trust 04,Mysuru,Karnataka,Verified,Free Medical Camp,camp04@pharmsync.example,+91-9824879094
+C005,EXT005,Community Health Trust 05,Mysuru,Karnataka,Verified,Mobile Clinic,camp05@pharmsync.example,+91-9881947921
+C006,EXT006,Community Health Trust 06,Mangaluru,Karnataka,Verified,Mobile Clinic,camp06@pharmsync.example,+91-9879172559
+C007,EXT007,Community Health Trust 07,Shivamogga,Karnataka,Verified,Free Medical Camp,camp07@pharmsync.example,+91-9829270557
+C008,EXT008,Community Health Trust 08,Bengaluru,Karnataka,Verified,NGO Pharmacy,camp08@pharmsync.example,+91-9810209961
+C009,EXT009,Community Health Trust 09,Shivamogga,Karnataka,Verified,NGO Pharmacy,camp09@pharmsync.example,+91-9842287985
+C010,EXT010,Community Health Trust 10,Shivamogga,Karnataka,Verified,NGO Pharmacy,camp10@pharmsync.example,+91-9835140847
