@@ -1,22 +1,40 @@
 from datetime import datetime, timedelta, timezone
+import re
 import bcrypt
 import jwt
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel, EmailStr, Field
+from email_validator import EmailNotValidError, validate_email
+from pydantic import BaseModel, Field, field_validator
 from app.config.settings import settings
 from app.database.connection import connection
 from app.middleware.auth import current_user
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
 ROLES = {"retail_chemist", "clinic_phc", "charity_ngo", "patient"}
+DEMO_EMAIL = re.compile(r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+test$", re.IGNORECASE)
+
+def normalize_account_email(value: str) -> str:
+    email = value.strip()
+    # RFC-reserved .test addresses are useful for local demos and cannot receive mail.
+    if DEMO_EMAIL.fullmatch(email):
+        return email.lower()
+    try:
+        return validate_email(email, check_deliverability=False).normalized.lower()
+    except EmailNotValidError as exc:
+        raise ValueError("Enter a valid email address.") from exc
 
 class LoginBody(BaseModel):
-    email: EmailStr
+    email: str
     password: str
+
+    @field_validator("email")
+    @classmethod
+    def validate_account_email(cls, value: str) -> str:
+        return normalize_account_email(value)
 
 class RegisterBody(BaseModel):
     fullName: str = Field(min_length=1, max_length=120)
-    email: EmailStr
+    email: str
     phone: str = Field(min_length=1, max_length=32)
     password: str = Field(min_length=8, max_length=128)
     confirmPassword: str
@@ -29,6 +47,11 @@ class RegisterBody(BaseModel):
     state: str | None = Field(default=None, max_length=100)
     latitude: float | None = None
     longitude: float | None = None
+
+    @field_validator("email")
+    @classmethod
+    def validate_account_email(cls, value: str) -> str:
+        return normalize_account_email(value)
 
 def user_response(user):
     return {"id": user["id"], "fullName": user["full_name"], "email": user["email"], "phone": user["phone"], "role": user["role"], "organizationName": user["organization_name"], "nodeId": user.get("node_id")}

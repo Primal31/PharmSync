@@ -3,11 +3,11 @@ from google import genai
 from app.schemas.scanner import MedicineExtraction
 from app.config.settings import settings
 
-PROMPT = """You are extracting information from a pharmaceutical medicine strip or package.
+PROMPT = """OPTIONAL FALLBACK OCR ONLY. You are extracting information from a pharmaceutical medicine strip or package.
 Read only information visibly present in the image. Do not guess or infer missing values.
 Return ONLY valid JSON with exactly these keys: medicineName, genericName, manufacturer,
 medicineId, batchNumber, manufacturingDate, expiryDate, gtin, storageCondition, barcode,
-unitPrice, confidence, missingFields, warnings.
+strength, dosageForm, unitPrice, confidence, missingFields, warnings.
 medicineId is only a product/medicine identifier visibly printed on the package; do not
 invent one. barcode is the literal decoded/printed barcode value only when readable.
 unitPrice is the printed price in INR only when clearly visible; otherwise null.

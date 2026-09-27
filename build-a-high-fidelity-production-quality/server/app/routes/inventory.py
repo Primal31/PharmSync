@@ -146,16 +146,16 @@ def restock(body: RestockRequest, user=Depends(require_retail)):
             catalog_match = cur.fetchone()
             if catalog_match:
                 medicine_id = catalog_match["medicine_id"]
-                cur.execute("UPDATE medicines SET medicine_name=%s,generic_name=%s,manufacturer=%s WHERE medicine_id=%s", (body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.manufacturer or "").strip() or None, medicine_id))
+                cur.execute("UPDATE medicines SET medicine_name=%s,generic_name=%s,strength=%s,dosage_form=%s,manufacturer=%s WHERE medicine_id=%s", (body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.strength or "").strip() or None, (body.dosage_form or "").strip() or None, (body.manufacturer or "").strip() or None, medicine_id))
             else:
                 cur.execute("SELECT gtin FROM medicines WHERE medicine_id=%s FOR UPDATE", (medicine_id,))
                 id_match = cur.fetchone()
                 if id_match and id_match["gtin"] and id_match["gtin"] != body.gtin:
                     raise HTTPException(409, "This PharmSync medicine ID is already linked to a different GTIN.")
                 if id_match:
-                    cur.execute("UPDATE medicines SET gtin=%s,medicine_name=%s,generic_name=%s,manufacturer=%s WHERE medicine_id=%s", (body.gtin, body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.manufacturer or "").strip() or None, medicine_id))
+                    cur.execute("UPDATE medicines SET gtin=%s,medicine_name=%s,generic_name=%s,strength=%s,dosage_form=%s,manufacturer=%s WHERE medicine_id=%s", (body.gtin, body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.strength or "").strip() or None, (body.dosage_form or "").strip() or None, (body.manufacturer or "").strip() or None, medicine_id))
                 else:
-                    cur.execute("INSERT INTO medicines(medicine_id,gtin,medicine_name,generic_name,manufacturer) VALUES(%s,%s,%s,%s,%s)", (medicine_id, body.gtin, body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.manufacturer or "").strip() or None))
+                    cur.execute("INSERT INTO medicines(medicine_id,gtin,medicine_name,generic_name,strength,dosage_form,manufacturer) VALUES(%s,%s,%s,%s,%s,%s,%s)", (medicine_id, body.gtin, body.medicine_name.strip(), (body.generic_name or "").strip() or None, (body.strength or "").strip() or None, (body.dosage_form or "").strip() or None, (body.manufacturer or "").strip() or None))
         cur.execute("SELECT batch_id,quantity FROM medicine_batches WHERE node_id=%s AND medicine_id=%s AND batch_number=%s FOR UPDATE", (node["node_id"], medicine_id, body.batch_number.strip()))
         existing = cur.fetchone()
         if existing:

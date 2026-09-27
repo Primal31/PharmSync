@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS medicines (
   gtin CHAR(14) NULL,
   medicine_name VARCHAR(180) NOT NULL,
   generic_name VARCHAR(180) NULL,
+  strength VARCHAR(80) NULL,
+  dosage_form VARCHAR(80) NULL,
   manufacturer VARCHAR(180) NULL,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (medicine_id),

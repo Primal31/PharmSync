@@ -42,8 +42,16 @@ async def http_error(_request: Request, exc: HTTPException):
     return JSONResponse(status_code=exc.status_code,content={"success":False,"message":str(exc.detail),"detail":exc.detail})
 
 @app.exception_handler(RequestValidationError)
-async def validation_error(_request: Request, _exc: RequestValidationError):
-    message="Please check the submitted fields and try again."
+async def validation_error(_request: Request, exc: RequestValidationError):
+    issues = []
+    for issue in exc.errors():
+        location = issue.get("loc", ())
+        field = str(location[-1]) if location else "request"
+        detail = str(issue.get("msg", "Invalid value")).removeprefix("Value error, ").rstrip(".")
+        entry = f"{field}: {detail}"
+        if entry not in issues:
+            issues.append(entry)
+    message = "Please check " + "; ".join(issues) + "." if issues else "Please check the submitted fields and try again."
     return JSONResponse(status_code=422,content={"success":False,"message":message,"detail":message})
 
 @app.get("/api/health")

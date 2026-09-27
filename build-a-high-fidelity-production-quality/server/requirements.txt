@@ -10,3 +10,10 @@ google-genai==2.25.0
 email-validator==2.2.0
 APScheduler==3.11.0
 pytest==8.3.5
+# Local CPU OCR stack (PaddlePaddle Windows wheels support Python 3.9–3.13).
+paddlepaddle==3.3.0
+paddleocr==3.7.0
+numpy>=1.24,<2.0
+opencv-contrib-python==4.11.0.86
+Pillow>=10,<13
+pyzbar>=0.1.9,<0.2
